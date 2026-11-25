@@ -137,26 +137,31 @@ export default function ContactForm({
   };
 
   const getInputClasses = (hasError?: string) =>
-    `w-full rounded-xs border px-4 py-2.5 text-base sm:text-sm text-dark placeholder:text-text-tertiary transition-colors focus:outline-none focus:ring-2 ${
+    `w-full rounded-xs border px-4 py-2.5 text-base sm:text-sm text-dark placeholder:text-text-secondary transition-colors focus:outline-none focus:ring-2 ${
       hasError
-        ? 'border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-red-200'
-        : 'border-border-dark bg-white focus:border-primary focus:ring-primary/20'
+        ? 'border-rose-400 bg-rose-50 focus:border-rose-500 focus:ring-rose-300'
+        : 'border-white/25 bg-white focus:border-blue-400 focus:ring-primary/40'
     }`;
 
   return (
-    <Card hover={false} className={`border-border-dark shadow-[6px_6px_0px_#E4E7EC] ${cardClassName}`}>
+    <Card
+      hover={false}
+      surface="dark"
+      className={`border-t-2 border-t-accent shadow-[6px_6px_0px_#16A36A] ${cardClassName}`}
+    >
       {status === 'success' ? (
         <div role="status" aria-live="polite" className="flex flex-col items-center py-12 text-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-xs border border-accent/30 bg-accent-light">
-            <CheckCircle2 className="h-7 w-7 text-accent" />
+          <div className="flex h-14 w-14 items-center justify-center rounded-xs border border-emerald-400/40 bg-emerald-500/20">
+            <CheckCircle2 className="h-7 w-7 text-emerald-400" />
           </div>
-          <h3 className="mt-4 text-xl font-bold text-dark">Message Sent Successfully</h3>
-          <p className="mt-2 max-w-md text-sm leading-relaxed text-text-secondary">
+          <h3 className="mt-4 text-xl font-bold text-white">Message Sent Successfully</h3>
+          <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-300">
             Thank you for contacting The Softnest Technologies. Our team will review your inquiry and respond within one business day.
           </p>
           <Button
             type="button"
             variant="outline"
+            surface="dark"
             size="sm"
             className="mt-6"
             onClick={() => setStatus('idle')}
@@ -166,15 +171,21 @@ export default function ContactForm({
         </div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-5">
-          <div className="border-b border-border-light pb-4">
-            <h3 className="text-xl font-bold text-dark">{title}</h3>
-            <p className="mt-1 text-sm text-text-secondary">{subtitle}</p>
+          <div className="flex flex-wrap items-start justify-between gap-3 border-b border-white/15 pb-4">
+            <div>
+              <h3 className="text-xl font-bold text-white">{title}</h3>
+              <p className="mt-1 text-sm text-gray-300">{subtitle}</p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 rounded-xs border border-emerald-400/35 bg-emerald-500/15 px-2.5 py-1 text-[11px] font-semibold text-emerald-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              Direct Inquiry
+            </span>
           </div>
 
           {status === 'error' && (
             <div
               role="alert"
-              className="flex items-center gap-2.5 rounded-xs border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              className="flex items-center gap-2.5 rounded-xs border border-rose-400/40 bg-rose-950/60 px-4 py-3 text-sm text-rose-200"
             >
               <AlertCircle className="h-4 w-4 shrink-0" />
               <span>
@@ -187,9 +198,9 @@ export default function ContactForm({
             <div>
               <label
                 htmlFor={`${idPrefix}-name`}
-                className="mb-1.5 block text-sm font-medium text-dark"
+                className="mb-1.5 block text-sm font-medium text-gray-100"
               >
-                Full Name <span className="text-red-500">*</span>
+                Full Name <span className="text-rose-400">*</span>
               </label>
               <input
                 id={`${idPrefix}-name`}
@@ -205,7 +216,7 @@ export default function ContactForm({
                 className={getInputClasses(errors.name)}
               />
               {errors.name && (
-                <p id={`${idPrefix}-name-error`} className="mt-1 text-xs text-red-600">
+                <p id={`${idPrefix}-name-error`} className="mt-1 text-xs text-rose-300">
                   {errors.name}
                 </p>
               )}
@@ -213,9 +224,9 @@ export default function ContactForm({
             <div>
               <label
                 htmlFor={`${idPrefix}-email`}
-                className="mb-1.5 block text-sm font-medium text-dark"
+                className="mb-1.5 block text-sm font-medium text-gray-100"
               >
-                Business Email <span className="text-red-500">*</span>
+                Business Email <span className="text-rose-400">*</span>
               </label>
               <input
                 id={`${idPrefix}-email`}
@@ -231,7 +242,7 @@ export default function ContactForm({
                 className={getInputClasses(errors.email)}
               />
               {errors.email && (
-                <p id={`${idPrefix}-email-error`} className="mt-1 text-xs text-red-600">
+                <p id={`${idPrefix}-email-error`} className="mt-1 text-xs text-rose-300">
                   {errors.email}
                 </p>
               )}
@@ -242,7 +253,7 @@ export default function ContactForm({
             <div>
               <label
                 htmlFor={`${idPrefix}-phone`}
-                className="mb-1.5 block text-sm font-medium text-dark"
+                className="mb-1.5 block text-sm font-medium text-gray-100"
               >
                 Phone Number
               </label>
@@ -259,7 +270,7 @@ export default function ContactForm({
                 className={getInputClasses(errors.phone)}
               />
               {errors.phone && (
-                <p id={`${idPrefix}-phone-error`} className="mt-1 text-xs text-red-600">
+                <p id={`${idPrefix}-phone-error`} className="mt-1 text-xs text-rose-300">
                   {errors.phone}
                 </p>
               )}
@@ -267,9 +278,9 @@ export default function ContactForm({
             <div>
               <label
                 htmlFor={`${idPrefix}-company`}
-                className="mb-1.5 block text-sm font-medium text-dark"
+                className="mb-1.5 block text-sm font-medium text-gray-100"
               >
-                Company Name <span className="text-red-500">*</span>
+                Company Name <span className="text-rose-400">*</span>
               </label>
               <input
                 id={`${idPrefix}-company`}
@@ -285,7 +296,7 @@ export default function ContactForm({
                 className={getInputClasses(errors.company)}
               />
               {errors.company && (
-                <p id={`${idPrefix}-company-error`} className="mt-1 text-xs text-red-600">
+                <p id={`${idPrefix}-company-error`} className="mt-1 text-xs text-rose-300">
                   {errors.company}
                 </p>
               )}
@@ -295,9 +306,9 @@ export default function ContactForm({
           <div>
             <label
               htmlFor={`${idPrefix}-service`}
-              className="mb-1.5 block text-sm font-medium text-dark"
+              className="mb-1.5 block text-sm font-medium text-gray-100"
             >
-              Service Interested In <span className="text-red-500">*</span>
+              Service Interested In <span className="text-rose-400">*</span>
             </label>
             <select
               id={`${idPrefix}-service`}
@@ -317,7 +328,7 @@ export default function ContactForm({
               ))}
             </select>
             {errors.service && (
-              <p id={`${idPrefix}-service-error`} className="mt-1 text-xs text-red-600">
+              <p id={`${idPrefix}-service-error`} className="mt-1 text-xs text-rose-300">
                 {errors.service}
               </p>
             )}
@@ -326,9 +337,9 @@ export default function ContactForm({
           <div>
             <label
               htmlFor={`${idPrefix}-message`}
-              className="mb-1.5 block text-sm font-medium text-dark"
+              className="mb-1.5 block text-sm font-medium text-gray-100"
             >
-              Message <span className="text-red-500">*</span>
+              Message <span className="text-rose-400">*</span>
             </label>
             <textarea
               id={`${idPrefix}-message`}
@@ -343,7 +354,7 @@ export default function ContactForm({
               className={`${getInputClasses(errors.message)} resize-y`}
             />
             {errors.message && (
-              <p id={`${idPrefix}-message-error`} className="mt-1 text-xs text-red-600">
+              <p id={`${idPrefix}-message-error`} className="mt-1 text-xs text-rose-300">
                 {errors.message}
               </p>
             )}
@@ -351,6 +362,8 @@ export default function ContactForm({
 
           <Button
             type="submit"
+            variant="accent"
+            surface="dark"
             size="lg"
             className="w-full"
             disabled={status === 'submitting'}

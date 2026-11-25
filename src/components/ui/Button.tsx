@@ -9,6 +9,7 @@ interface ButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   surface?: ButtonSurface;
+  mobileCompact?: boolean;
   className?: string;
   as?: ElementType;
   [key: string]: unknown;
@@ -29,13 +30,13 @@ const lightVariantStyles: Record<ButtonVariant, string> = {
 
 const darkVariantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-primary text-white border border-blue-400/50 shadow-[4px_4px_0px_#16A36A] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[5px_5px_0px_#16A36A] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#16A36A]',
+    'bg-primary text-white border border-blue-300/60 shadow-[4px_4px_0px_#FFFFFF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[5px_5px_0px_#FFFFFF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#FFFFFF]',
   secondary:
     'bg-white text-dark border border-white shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-bg-light hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
   outline:
     'bg-[#131C2E]/90 text-white border border-white/70 shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
   accent:
-    'bg-accent text-white border border-emerald-400/50 shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
+    'bg-accent text-white border border-emerald-300/60 shadow-[4px_4px_0px_#FFFFFF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[5px_5px_0px_#FFFFFF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#FFFFFF]',
   ghost:
     'bg-transparent text-gray-300 border border-transparent hover:bg-white/10 hover:text-white',
 };
@@ -51,16 +52,21 @@ export default function Button({
   variant = 'primary',
   size = 'md',
   surface = 'light',
+  mobileCompact = false,
   className = '',
   as: Component = 'button',
   ...props
 }: ButtonProps) {
   const variantClasses =
     surface === 'dark' ? darkVariantStyles[variant] : lightVariantStyles[variant];
+  const resolvedSize =
+    mobileCompact && size === 'lg'
+      ? 'px-4 py-2.5 text-sm gap-2 sm:px-7 sm:py-3.5 sm:text-base sm:gap-2.5'
+      : sizeStyles[size];
 
   return (
     <Component
-      className={`inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-xs font-semibold tracking-tight transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variantClasses} ${sizeStyles[size]} ${className}`}
+      className={`inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-xs font-semibold tracking-tight transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variantClasses} ${resolvedSize} ${className}`}
       {...props}
     >
       {children}

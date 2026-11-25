@@ -38,7 +38,7 @@ export default function Contact() {
       <Section bg="white">
         <div className="grid gap-8 lg:grid-cols-5 lg:gap-10">
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-dark">Get in Touch</h2>
+            <h2 className="text-xl font-bold text-dark sm:text-2xl">Get in Touch</h2>
             <p className="mt-3 text-base leading-relaxed text-text-secondary">
               Reach out through any of the channels below, or submit your inquiry and our team will respond promptly.
             </p>
@@ -46,7 +46,7 @@ export default function Contact() {
             <div className="mt-8 space-y-4">
               <a
                 href={`mailto:${COMPANY.email}`}
-                className="group flex items-start gap-3.5 rounded-xs border border-border-dark bg-white p-4 transition-colors hover:border-primary hover:bg-bg-light"
+                className="group flex items-start gap-3.5 rounded-xs border border-border-dark border-l-2 border-l-primary bg-white p-4 transition-colors hover:border-primary hover:bg-bg-light"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-primary/25 bg-primary-light text-primary">
                   <Mail className="h-5 w-5" />
@@ -61,26 +61,32 @@ export default function Contact() {
 
               <a
                 href={`tel:${COMPANY.phoneRaw}`}
-                className="group flex items-start gap-3.5 rounded-xs border border-border-dark bg-white p-4 transition-colors hover:border-primary hover:bg-bg-light"
+                className="group flex items-start gap-3.5 rounded-xs border border-border-dark border-l-2 border-l-accent bg-white p-4 transition-colors hover:border-accent hover:bg-accent-light/30"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-primary/25 bg-primary-light text-primary">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-accent/30 bg-accent-light text-accent-dark">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-dark">Call Us</p>
-                  <p className="mt-0.5 text-sm text-primary group-hover:underline">
+                  <p className="mt-0.5 text-sm font-medium text-accent-dark group-hover:underline">
                     {COMPANY.phone}
                   </p>
                 </div>
               </a>
 
-              <div className="rounded-xs border border-accent/35 bg-accent-light/50 p-4">
+              <div className="rounded-xs border border-accent/40 border-t-2 border-t-accent bg-accent-light/50 p-4 shadow-[4px_4px_0px_#16A36A]">
                 <div className="flex items-start gap-3.5">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-accent-dark bg-accent text-white">
                     <MessageSquare className="h-5 w-5" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-dark">WhatsApp</p>
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-sm font-semibold text-dark">WhatsApp</p>
+                      <span className="inline-flex items-center gap-1 rounded-xs border border-accent/35 bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-dark">
+                        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                        Fast Reply
+                      </span>
+                    </div>
                     <p className="mt-0.5 text-sm text-text-secondary">{COMPANY.whatsapp}</p>
                     <Button
                       as="a"
@@ -99,9 +105,9 @@ export default function Contact() {
               </div>
             </div>
 
-            <Card className="mt-6 bg-bg-light">
+            <Card className="mt-6 border-border-dark border-t-2 border-t-accent bg-bg-light shadow-[4px_4px_0px_#D1FAE5]">
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-primary-dark bg-primary text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-accent-dark bg-accent text-white">
                   <Calendar className="h-5 w-5" />
                 </div>
                 <div>
@@ -122,6 +128,31 @@ export default function Contact() {
                 </div>
               </div>
             </Card>
+
+            <div className="mt-5 rounded-xs border border-accent/30 bg-accent-light/40 p-4">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-accent-dark">
+                Outreach Onboarding Flow
+              </p>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {[
+                  { step: '01', label: 'Submit Inquiry' },
+                  { step: '02', label: 'Discovery Review' },
+                  { step: '03', label: 'Outreach Plan' },
+                ].map((item) => (
+                  <div
+                    key={item.step}
+                    className="rounded-xs border border-accent/25 bg-white p-2.5"
+                  >
+                    <span className="inline-flex h-5 items-center rounded-xs border border-accent/30 bg-accent-light px-1.5 text-[10px] font-bold text-accent-dark">
+                      {item.step}
+                    </span>
+                    <p className="mt-1.5 text-xs font-semibold leading-snug text-dark">
+                      {item.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <div className="mt-6">
               <ConnectBar label="CONNECT" onInquiryClick={scrollToForm} />

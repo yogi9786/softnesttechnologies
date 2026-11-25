@@ -50,11 +50,11 @@ export default function SectionHeading({
           {label}
         </span>
       )}
-      <h2 className={`text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl ${titleClasses}`}>
+      <h2 className={`text-xl font-bold tracking-tight sm:text-3xl lg:text-4xl ${titleClasses}`}>
         {title}
       </h2>
       {description && (
-        <p className={`mt-3 text-base leading-relaxed sm:text-lg ${descClasses}`}>
+        <p className={`mt-2.5 text-sm leading-relaxed sm:mt-3 sm:text-lg ${descClasses}`}>
           {description}
         </p>
       )}
