@@ -34,7 +34,7 @@ const iconSizeStyles = {
 export default function IconBox({ icon: Icon, variant = 'primary', size = 'md' }: IconBoxProps) {
   return (
     <div
-      className={`inline-flex shrink-0 items-center justify-center rounded-[2px] border ${variantStyles[variant]} ${sizeStyles[size]}`}
+      className={`inline-flex shrink-0 items-center justify-center rounded-xs border ${variantStyles[variant]} ${sizeStyles[size]}`}
     >
       <Icon className={iconSizeStyles[size]} />
     </div>

@@ -22,6 +22,7 @@ import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import IconBox from '../components/ui/IconBox';
 import ConnectBar from '../components/ConnectBar';
+import PlatformMarquee from '../components/PlatformMarquee';
 import ServiceVisual from '../components/ServiceVisual';
 import ContactForm from '../components/ContactForm';
 import EnterpriseCTA from '../components/EnterpriseCTA';
@@ -86,16 +87,16 @@ export default function Home() {
   return (
     <>
       {/* 1. Hero Section — Deep Dark Blurred Enterprise Canvas */}
-      <section className="relative overflow-hidden border-b border-dark-secondary bg-[#0B1220] bg-dot-grid-dark text-white">
+      <section className="relative overflow-hidden border-b border-dark-secondary bg-[#0B1220] bg-dot-grid-dark pt-24 pb-12 text-white sm:pt-28 sm:pb-16 lg:pt-30 lg:pb-18">
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-28 -right-16 h-96 w-96 rounded-full bg-primary/30 blur-[130px]" />
           <div className="absolute -bottom-28 -left-16 h-80 w-80 rounded-full bg-accent/20 blur-[120px]" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-12">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-7">
-              <span className="mb-6 inline-flex items-center gap-2 rounded-[2px] border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-gray-200 backdrop-blur-xs">
+              <span className="mb-5 inline-flex items-center gap-2 rounded-xs border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-gray-200 backdrop-blur-xs">
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
                 B2B Lead Generation &amp; Technology Services
               </span>
@@ -103,12 +104,12 @@ export default function Home() {
                 Accelerate Your Growth with{' '}
                 <span className="text-blue-400">Qualified Leads</span>
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
                 We help B2B companies build predictable revenue pipelines through
                 targeted lead generation, strategic outreach, and verified prospect data.
               </p>
 
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+              <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap sm:items-center">
                 <Button
                   as={Link}
                   to="/contact"
@@ -133,7 +134,7 @@ export default function Home() {
                 </Button>
               </div>
 
-              <div className="mt-10">
+              <div className="mt-8">
                 <ConnectBar
                   label="CONNECT"
                   surface="dark"
@@ -154,7 +155,7 @@ export default function Home() {
                       Structured Pipeline Execution
                     </p>
                   </div>
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-[2px] border border-emerald-400/40 bg-emerald-500/15 text-emerald-400">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-xs border border-emerald-400/40 bg-emerald-500/15 text-emerald-400">
                     <CheckCircle2 className="h-4 w-4" />
                   </span>
                 </div>
@@ -185,7 +186,7 @@ export default function Home() {
                       key={pillar.title}
                       className="flex items-start gap-3.5 border-b border-white/10 pb-3.5 last:border-b-0 last:pb-0"
                     >
-                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-[2px] border border-blue-400/40 bg-primary text-xs font-bold text-white">
+                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-xs border border-blue-400/40 bg-primary text-xs font-bold text-white">
                         {pillar.step}
                       </span>
                       <div>
@@ -203,42 +204,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Company Introduction — Crisp White */}
+      {/* 2. Who We Are — Minimal Content with Architectural Frame & Repeating Platform Marquee */}
       <Section bg="white" className="border-b border-border-light">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="mb-3 inline-flex items-center gap-2 rounded-[2px] border border-primary/20 bg-primary-light/70 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+        <div className="relative mx-auto max-w-4xl rounded-[3px] border border-border-dark bg-white bg-dot-grid px-5 py-8 text-center shadow-[6px_6px_0px_#EBF1FF] sm:px-10 sm:py-10">
+          <div
+            className="pointer-events-none absolute top-0 left-0 h-1 w-24 bg-primary"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute top-0 right-0 h-1 w-14 bg-accent"
+            aria-hidden="true"
+          />
+          <span className="mb-3 inline-flex items-center gap-2 rounded-xs border border-primary/20 bg-primary-light/70 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
             <span className="h-1.5 w-1.5 bg-accent" />
             Who We Are
           </span>
           <h2 className="text-2xl font-bold tracking-tight text-dark sm:text-3xl lg:text-4xl">
             Your Growth Partner in B2B Lead Generation
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-text-secondary sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
             The Softnest Technologies is a specialized B2B lead generation and technology
             services company. We combine data-driven research with strategic outreach to
             deliver verified, qualified leads that convert into real business opportunities.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            {['Verified B2B Data', 'IT & SaaS Specialists', 'Multi-Channel Outreach'].map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center gap-2 rounded-[2px] border border-border-dark bg-bg-light px-3.5 py-1.5 text-xs font-semibold text-dark"
-              >
-                <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
+
+        {/* Continuous Horizontal Platform Scroller */}
+        <PlatformMarquee />
       </Section>
 
-      {/* 3. Services Overview — Refined Cool Slate (#F3F6FB) with Crisp White Cards */}
-      <Section bg="slate" className="border-b border-border-light">
+      {/* 3. Services Overview — Very Light Corporate Blue Blueprint Grid (#E9F1FF) */}
+      <Section bg="light-blue" className="border-b border-primary/15">
         <SectionHeading
           label="Our Services"
           title="Lead Generation Solutions"
           description="Comprehensive services designed to fuel your sales pipeline with high-quality prospects."
-          tone="slate"
+          tone="light-blue"
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, index) => {
@@ -246,10 +247,13 @@ export default function Home() {
             const serviceNum = String(index + 1).padStart(2, '0');
 
             return (
-              <Card key={service.id} className="flex h-full flex-col border-border-dark/60">
+              <Card
+                key={service.id}
+                className="flex h-full flex-col border-primary/20 shadow-[4px_4px_0px_#D6E4FF]"
+              >
                 <div className="flex items-center justify-between">
                   <IconBox icon={Icon} variant={index % 2 === 0 ? 'primary' : 'accent'} />
-                  <span className="rounded-[2px] border border-border-light bg-bg-light px-2.5 py-1 text-xs font-bold tracking-wider text-text-secondary">
+                  <span className="rounded-xs border border-border-light bg-bg-light px-2.5 py-1 text-xs font-bold tracking-wider text-text-secondary">
                     {serviceNum}
                   </span>
                 </div>
@@ -276,7 +280,7 @@ export default function Home() {
             );
           })}
         </div>
-        <div className="mt-12 text-center">
+        <div className="mt-9 text-center">
           <Button as={Link} to="/services" variant="outline" size="md">
             View All Services
             <ArrowRight className="h-4 w-4" />
@@ -308,25 +312,40 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 5. Home Contact Form Section — Crisp White */}
-      <Section bg="white" id="home-contact">
+      {/* 5. Home Contact Form Section — Soft Architectural Blue Surface */}
+      <Section bg="soft-blue" className="scroll-mt-24 border-b border-primary/15" id="home-contact">
         <SectionHeading
           label="Start a Conversation"
           title="Request Qualified B2B Leads"
           description="Tell us about your target market and service goals, or connect with us directly."
+          tone="light-blue"
         />
-        <div className="grid gap-10 lg:grid-cols-5 lg:gap-12">
-          <div className="space-y-6 lg:col-span-2">
-            <Card hover={false} className="border-border-dark bg-bg-light shadow-[5px_5px_0px_#E4E7EC]">
-              <h3 className="text-lg font-bold text-dark">Direct Contact Channels</h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+        <div className="grid gap-7 lg:grid-cols-5 lg:gap-10">
+          <div className="space-y-5 lg:col-span-2">
+            <Card
+              hover={false}
+              className="border-border-dark border-t-2 border-t-primary bg-white shadow-[6px_6px_0px_#D6E4FF]"
+            >
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border-light pb-4">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-primary">
+                    Direct Access
+                  </span>
+                  <h3 className="mt-0.5 text-lg font-bold text-dark">Direct Contact Channels</h3>
+                </div>
+                <span className="inline-flex items-center gap-1.5 rounded-xs border border-accent/30 bg-accent-light px-2.5 py-1 text-[11px] font-semibold text-accent-dark">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  1-Day Reply
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                 Reach our team directly via email, phone, or WhatsApp, or schedule a discovery call.
               </p>
 
-              <div className="mt-6 space-y-4">
+              <div className="mt-5 space-y-3.5">
                 <a
                   href={`mailto:${COMPANY.email}`}
-                  className="flex items-start gap-3 rounded-[2px] border border-border-dark bg-white p-3.5 transition-colors hover:border-primary"
+                  className="flex items-start gap-3 rounded-xs border border-border-dark bg-bg-light p-3.5 transition-colors hover:border-primary hover:bg-primary-light/30"
                 >
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   <div className="min-w-0">
@@ -341,7 +360,7 @@ export default function Home() {
 
                 <a
                   href={`tel:${COMPANY.phoneRaw}`}
-                  className="flex items-start gap-3 rounded-[2px] border border-border-dark bg-white p-3.5 transition-colors hover:border-primary"
+                  className="flex items-start gap-3 rounded-xs border border-border-dark bg-bg-light p-3.5 transition-colors hover:border-primary hover:bg-primary-light/30"
                 >
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   <div>
@@ -386,14 +405,15 @@ export default function Home() {
               idPrefix="home-contact"
               title="Send Us an Inquiry"
               subtitle="Complete the form below and our lead generation team will get back to you promptly."
+              cardClassName="border-t-2 border-t-accent shadow-[6px_6px_0px_#D6E4FF]"
             />
           </div>
         </div>
       </Section>
 
-      {/* 6. Final CTA Box inside Cool Slate Band */}
+      {/* 6. Final CTA Box inside Crisp White Band */}
       <EnterpriseCTA
-        bg="slate"
+        bg="white"
         title="Ready to Scale Your Sales Pipeline?"
         description="Let us help you connect with the right prospects and grow your business."
         showTrustRow

@@ -46,6 +46,12 @@ function validateForm(data: FormData): FormErrors {
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
     errors.email = 'Please enter a valid email address.';
   }
+  if (data.phone.trim()) {
+    const digits = data.phone.replace(/\D/g, '');
+    if (!/^[+\d\s().-]+$/.test(data.phone.trim()) || digits.length < 7) {
+      errors.phone = 'Please enter a valid phone number.';
+    }
+  }
   if (!data.company.trim()) {
     errors.company = 'Company name is required.';
   }
@@ -63,12 +69,14 @@ interface ContactFormProps {
   title?: string;
   subtitle?: string;
   idPrefix?: string;
+  cardClassName?: string;
 }
 
 export default function ContactForm({
   title = 'Send Us an Inquiry',
   subtitle = 'Share your target audience and goals, and we will follow up within one business day.',
   idPrefix = 'contact',
+  cardClassName = '',
 }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -82,10 +90,15 @@ export default function ContactForm({
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
+    if (status === 'error') {
+      setStatus('idle');
+    }
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (status === 'submitting') return;
+
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -124,17 +137,17 @@ export default function ContactForm({
   };
 
   const getInputClasses = (hasError?: string) =>
-    `w-full rounded-[2px] border px-4 py-2.5 text-sm text-dark placeholder:text-text-tertiary transition-colors focus:outline-none focus:ring-2 ${
+    `w-full rounded-xs border px-4 py-2.5 text-base sm:text-sm text-dark placeholder:text-text-tertiary transition-colors focus:outline-none focus:ring-2 ${
       hasError
         ? 'border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-red-200'
         : 'border-border-dark bg-white focus:border-primary focus:ring-primary/20'
     }`;
 
   return (
-    <Card hover={false} className="border-border-dark shadow-[6px_6px_0px_#E4E7EC]">
+    <Card hover={false} className={`border-border-dark shadow-[6px_6px_0px_#E4E7EC] ${cardClassName}`}>
       {status === 'success' ? (
-        <div className="flex flex-col items-center py-12 text-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-[2px] border border-accent/30 bg-accent-light">
+        <div role="status" aria-live="polite" className="flex flex-col items-center py-12 text-center">
+          <div className="flex h-14 w-14 items-center justify-center rounded-xs border border-accent/30 bg-accent-light">
             <CheckCircle2 className="h-7 w-7 text-accent" />
           </div>
           <h3 className="mt-4 text-xl font-bold text-dark">Message Sent Successfully</h3>
@@ -161,7 +174,7 @@ export default function ContactForm({
           {status === 'error' && (
             <div
               role="alert"
-              className="flex items-center gap-2.5 rounded-[2px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              className="flex items-center gap-2.5 rounded-xs border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
             >
               <AlertCircle className="h-4 w-4 shrink-0" />
               <span>
@@ -182,13 +195,20 @@ export default function ContactForm({
                 id={`${idPrefix}-name`}
                 name="name"
                 type="text"
+                autoComplete="name"
                 required
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? `${idPrefix}-name-error` : undefined}
                 placeholder="Your full name"
                 value={formData.name}
                 onChange={handleChange}
                 className={getInputClasses(errors.name)}
               />
-              {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
+              {errors.name && (
+                <p id={`${idPrefix}-name-error`} className="mt-1 text-xs text-red-600">
+                  {errors.name}
+                </p>
+              )}
             </div>
             <div>
               <label
@@ -201,13 +221,20 @@ export default function ContactForm({
                 id={`${idPrefix}-email`}
                 name="email"
                 type="email"
+                autoComplete="email"
                 required
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? `${idPrefix}-email-error` : undefined}
                 placeholder="you@company.com"
                 value={formData.email}
                 onChange={handleChange}
                 className={getInputClasses(errors.email)}
               />
-              {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+              {errors.email && (
+                <p id={`${idPrefix}-email-error`} className="mt-1 text-xs text-red-600">
+                  {errors.email}
+                </p>
+              )}
             </div>
           </div>
 
@@ -223,11 +250,19 @@ export default function ContactForm({
                 id={`${idPrefix}-phone`}
                 name="phone"
                 type="tel"
+                autoComplete="tel"
+                aria-invalid={Boolean(errors.phone)}
+                aria-describedby={errors.phone ? `${idPrefix}-phone-error` : undefined}
                 placeholder="+91 XXXXX XXXXX"
                 value={formData.phone}
                 onChange={handleChange}
-                className={getInputClasses()}
+                className={getInputClasses(errors.phone)}
               />
+              {errors.phone && (
+                <p id={`${idPrefix}-phone-error`} className="mt-1 text-xs text-red-600">
+                  {errors.phone}
+                </p>
+              )}
             </div>
             <div>
               <label
@@ -240,13 +275,20 @@ export default function ContactForm({
                 id={`${idPrefix}-company`}
                 name="company"
                 type="text"
+                autoComplete="organization"
                 required
+                aria-invalid={Boolean(errors.company)}
+                aria-describedby={errors.company ? `${idPrefix}-company-error` : undefined}
                 placeholder="Your company"
                 value={formData.company}
                 onChange={handleChange}
                 className={getInputClasses(errors.company)}
               />
-              {errors.company && <p className="mt-1 text-xs text-red-600">{errors.company}</p>}
+              {errors.company && (
+                <p id={`${idPrefix}-company-error`} className="mt-1 text-xs text-red-600">
+                  {errors.company}
+                </p>
+              )}
             </div>
           </div>
 
@@ -261,6 +303,8 @@ export default function ContactForm({
               id={`${idPrefix}-service`}
               name="service"
               required
+              aria-invalid={Boolean(errors.service)}
+              aria-describedby={errors.service ? `${idPrefix}-service-error` : undefined}
               value={formData.service}
               onChange={handleChange}
               className={getInputClasses(errors.service)}
@@ -272,7 +316,11 @@ export default function ContactForm({
                 </option>
               ))}
             </select>
-            {errors.service && <p className="mt-1 text-xs text-red-600">{errors.service}</p>}
+            {errors.service && (
+              <p id={`${idPrefix}-service-error`} className="mt-1 text-xs text-red-600">
+                {errors.service}
+              </p>
+            )}
           </div>
 
           <div>
@@ -287,12 +335,18 @@ export default function ContactForm({
               name="message"
               required
               rows={4}
+              aria-invalid={Boolean(errors.message)}
+              aria-describedby={errors.message ? `${idPrefix}-message-error` : undefined}
               placeholder="Tell us about your requirements..."
               value={formData.message}
               onChange={handleChange}
               className={`${getInputClasses(errors.message)} resize-y`}
             />
-            {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
+            {errors.message && (
+              <p id={`${idPrefix}-message-error`} className="mt-1 text-xs text-red-600">
+                {errors.message}
+              </p>
+            )}
           </div>
 
           <Button

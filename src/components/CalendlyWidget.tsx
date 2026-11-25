@@ -58,7 +58,7 @@ interface CalendlyWidgetProps {
   onAction?: () => void;
 }
 
-export function CalendlyEmbed({ heightClass = 'h-[580px]', onAction }: CalendlyWidgetProps) {
+export function CalendlyEmbed({ heightClass = 'h-145', onAction }: CalendlyWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
   const hasUrl = Boolean(COMPANY.calendlyUrl.trim());
@@ -87,16 +87,16 @@ export function CalendlyEmbed({ heightClass = 'h-[580px]', onAction }: CalendlyW
     return (
       <div
         ref={containerRef}
-        className={`w-full overflow-hidden rounded-[2px] border border-border-dark bg-white ${heightClass}`}
+        className={`w-full overflow-hidden rounded-xs border border-border-dark bg-white ${heightClass}`}
       />
     );
   }
 
   return (
-    <div className="rounded-[2px] border border-border-dark bg-white p-6 shadow-[5px_5px_0px_#D0D5DD] sm:p-8">
+    <div className="rounded-xs border border-border-dark bg-white p-6 shadow-[5px_5px_0px_#D0D5DD] sm:p-8">
       <div className="flex flex-col gap-6">
         <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[2px] border border-primary-dark bg-primary text-white">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xs border border-primary-dark bg-primary text-white">
             <Calendar className="h-6 w-6" />
           </div>
           <div>
@@ -104,7 +104,7 @@ export function CalendlyEmbed({ heightClass = 'h-[580px]', onAction }: CalendlyW
             <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
               Speak directly with our lead generation specialists to review your target audience, campaign goals, and timeline.
             </p>
-            <div className="mt-3 inline-flex items-center gap-1.5 rounded-[2px] border border-accent/30 bg-accent-light px-3 py-1 text-xs font-semibold text-accent-dark">
+            <div className="mt-3 inline-flex items-center gap-1.5 rounded-xs border border-accent/30 bg-accent-light px-3 py-1 text-xs font-semibold text-accent-dark">
               <Clock className="h-3.5 w-3.5" />
               30-Minute Strategy Call
             </div>
@@ -114,7 +114,7 @@ export function CalendlyEmbed({ heightClass = 'h-[580px]', onAction }: CalendlyW
         <div className="grid gap-3 sm:grid-cols-2">
           <a
             href={`tel:${COMPANY.phoneRaw}`}
-            className="flex items-center gap-3 rounded-[2px] border border-border-dark bg-white p-3.5 text-sm font-medium text-dark transition-colors hover:border-primary hover:bg-primary-light/40"
+            className="flex items-center gap-3 rounded-xs border border-border-dark bg-white p-3.5 text-sm font-medium text-dark transition-colors hover:border-primary hover:bg-primary-light/40"
           >
             <Phone className="h-4 w-4 shrink-0 text-primary" />
             <span className="truncate">{COMPANY.phone}</span>
@@ -123,7 +123,7 @@ export function CalendlyEmbed({ heightClass = 'h-[580px]', onAction }: CalendlyW
             href={`https://wa.me/${COMPANY.whatsappRaw}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-[2px] border border-border-dark bg-white p-3.5 text-sm font-medium text-dark transition-colors hover:border-accent hover:bg-accent-light/40"
+            className="flex items-center gap-3 rounded-xs border border-border-dark bg-white p-3.5 text-sm font-medium text-dark transition-colors hover:border-accent hover:bg-accent-light/40"
           >
             <MessageSquare className="h-4 w-4 shrink-0 text-accent" />
             <span className="truncate">Chat on WhatsApp</span>
@@ -203,12 +203,12 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="relative w-full max-w-2xl overflow-hidden rounded-[3px] border border-dark bg-white shadow-[8px_8px_0px_#155EEF]"
+            className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[3px] border border-dark bg-white shadow-[8px_8px_0px_#155EEF]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-border-light px-6 py-4">
               <div className="flex items-center gap-2.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-[2px] border border-primary/25 bg-primary-light text-primary">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xs border border-primary/25 bg-primary-light text-primary">
                   <Calendar className="h-4 w-4" />
                 </div>
                 <h2 id="calendly-modal-title" className="text-base font-semibold text-dark">
@@ -218,14 +218,14 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="cursor-pointer rounded-[2px] border border-transparent p-1.5 text-text-secondary transition-colors hover:border-border-light hover:bg-bg-light hover:text-dark"
+                className="cursor-pointer rounded-xs border border-transparent p-1.5 text-text-secondary transition-colors hover:border-border-light hover:bg-bg-light hover:text-dark"
                 aria-label="Close scheduling dialog"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
             <div className="p-4 sm:p-6">
-              <CalendlyEmbed heightClass="h-[520px]" onAction={() => setIsOpen(false)} />
+              <CalendlyEmbed heightClass="h-110 sm:h-130" onAction={() => setIsOpen(false)} />
             </div>
           </div>
         </div>

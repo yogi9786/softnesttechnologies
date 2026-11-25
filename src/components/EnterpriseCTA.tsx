@@ -7,7 +7,7 @@ import { useCalendly } from '../context/CalendlyContext';
 interface EnterpriseCTAProps {
   title: string;
   description: string;
-  bg?: 'white' | 'slate';
+  bg?: 'white' | 'slate' | 'light-blue';
   primaryLabel?: string;
   showSchedule?: boolean;
   showTrustRow?: boolean;
@@ -24,8 +24,8 @@ export default function EnterpriseCTA({
   const { openCalendly } = useCalendly();
 
   return (
-    <Section bg={bg} className="border-t border-border-light">
-      <div className="relative overflow-hidden rounded-[3px] border border-dark bg-[#0B1220] bg-dot-grid-dark px-6 py-12 text-center shadow-[8px_8px_0px_#155EEF] sm:px-12 sm:py-16">
+    <Section bg={bg} compact className="border-t border-border-light">
+      <div className="relative overflow-hidden rounded-[3px] border border-dark bg-[#0B1220] bg-dot-grid-dark px-6 py-10 text-center shadow-[8px_8px_0px_#155EEF] sm:px-10 sm:py-12">
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-20 left-1/4 h-64 w-64 rounded-full bg-primary/25 blur-[100px]" />
           <div className="absolute -bottom-20 right-1/4 h-64 w-64 rounded-full bg-accent/15 blur-[100px]" />

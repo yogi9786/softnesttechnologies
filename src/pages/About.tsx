@@ -59,9 +59,9 @@ export default function About() {
 
       {/* Company Overview — Crisp White */}
       <Section bg="white">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
           <div>
-            <span className="mb-3 inline-flex items-center gap-2 rounded-[2px] border border-primary/20 bg-primary-light/70 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-xs border border-primary/20 bg-primary-light/70 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
               <span className="h-1.5 w-1.5 bg-accent" />
               Company Overview
             </span>
@@ -88,7 +88,7 @@ export default function About() {
             ].map((item, idx) => (
               <div
                 key={item.label}
-                className="rounded-[2px] border border-border-dark bg-bg-light p-6 text-center shadow-[4px_4px_0px_#E4E7EC]"
+                className="rounded-xs border border-border-dark bg-bg-light p-4 text-center shadow-[4px_4px_0px_#E4E7EC] sm:p-6"
               >
                 <p
                   className={`text-lg font-bold ${

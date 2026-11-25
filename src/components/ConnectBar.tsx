@@ -35,8 +35,8 @@ export default function ConnectBar({
 
   const tileBase =
     surface === 'dark'
-      ? 'flex h-10 w-10 items-center justify-center rounded-[2px] border border-white/25 bg-[#131C2E]/90 transition-all duration-150 hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-[3px_3px_0px_#155EEF] cursor-pointer'
-      : 'flex h-10 w-10 items-center justify-center rounded-[2px] border border-border-dark bg-white transition-all duration-150 hover:-translate-y-0.5 hover:border-primary hover:shadow-[3px_3px_0px_#155EEF] cursor-pointer';
+      ? 'flex h-10 w-10 items-center justify-center rounded-xs border border-white/25 bg-[#131C2E]/90 transition-all duration-150 hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-[3px_3px_0px_#155EEF] cursor-pointer'
+      : 'flex h-10 w-10 items-center justify-center rounded-xs border border-border-dark bg-white transition-all duration-150 hover:-translate-y-0.5 hover:border-primary hover:shadow-[3px_3px_0px_#155EEF] cursor-pointer';
 
   const blueIcon = surface === 'dark' ? 'text-blue-400' : 'text-primary';
   const neutralIcon = surface === 'dark' ? 'text-white' : 'text-dark';
@@ -63,7 +63,7 @@ export default function ConnectBar({
             aria-label="Email The Softnest Technologies"
             className={`${tileBase} ${blueIcon}`}
           >
-            <Mail className="h-[18px] w-[18px]" />
+            <Mail className="h-4.5 w-4.5" />
           </a>
 
           <a
@@ -72,7 +72,7 @@ export default function ConnectBar({
             aria-label="Call The Softnest Technologies"
             className={`${tileBase} ${neutralIcon}`}
           >
-            <Phone className="h-[18px] w-[18px]" />
+            <Phone className="h-4.5 w-4.5" />
           </a>
 
           <a
@@ -83,7 +83,7 @@ export default function ConnectBar({
             aria-label="WhatsApp The Softnest Technologies"
             className={`${tileBase} ${greenIcon} hover:border-accent hover:shadow-[3px_3px_0px_#16A36A]`}
           >
-            <WhatsAppIcon className="h-[18px] w-[18px]" />
+            <WhatsAppIcon className="h-4.5 w-4.5" />
           </a>
 
           <button
@@ -93,7 +93,7 @@ export default function ConnectBar({
             aria-label="Schedule a Meeting"
             className={`${tileBase} ${blueIcon}`}
           >
-            <Calendar className="h-[18px] w-[18px]" />
+            <Calendar className="h-4.5 w-4.5" />
           </button>
 
           {onInquiryClick && (
@@ -104,7 +104,7 @@ export default function ConnectBar({
               aria-label="Go to contact form"
               className={`${tileBase} ${greenIcon} hover:border-accent hover:shadow-[3px_3px_0px_#16A36A]`}
             >
-              <Send className="h-[17px] w-[17px]" />
+              <Send className="h-4.25 w-4.25" />
             </button>
           )}
         </div>

@@ -36,7 +36,7 @@ export default function Contact() {
 
       {/* Contact Content — Crisp White */}
       <Section bg="white">
-        <div className="grid gap-10 lg:grid-cols-5 lg:gap-14">
+        <div className="grid gap-8 lg:grid-cols-5 lg:gap-10">
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold text-dark">Get in Touch</h2>
             <p className="mt-3 text-base leading-relaxed text-text-secondary">
@@ -46,9 +46,9 @@ export default function Contact() {
             <div className="mt-8 space-y-4">
               <a
                 href={`mailto:${COMPANY.email}`}
-                className="group flex items-start gap-3.5 rounded-[2px] border border-border-dark bg-white p-4 transition-colors hover:border-primary hover:bg-bg-light"
+                className="group flex items-start gap-3.5 rounded-xs border border-border-dark bg-white p-4 transition-colors hover:border-primary hover:bg-bg-light"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] border border-primary/25 bg-primary-light text-primary">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-primary/25 bg-primary-light text-primary">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
@@ -61,9 +61,9 @@ export default function Contact() {
 
               <a
                 href={`tel:${COMPANY.phoneRaw}`}
-                className="group flex items-start gap-3.5 rounded-[2px] border border-border-dark bg-white p-4 transition-colors hover:border-primary hover:bg-bg-light"
+                className="group flex items-start gap-3.5 rounded-xs border border-border-dark bg-white p-4 transition-colors hover:border-primary hover:bg-bg-light"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] border border-primary/25 bg-primary-light text-primary">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-primary/25 bg-primary-light text-primary">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
@@ -74,9 +74,9 @@ export default function Contact() {
                 </div>
               </a>
 
-              <div className="rounded-[2px] border border-accent/35 bg-accent-light/50 p-4">
+              <div className="rounded-xs border border-accent/35 bg-accent-light/50 p-4">
                 <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] border border-accent-dark bg-accent text-white">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-accent-dark bg-accent text-white">
                     <MessageSquare className="h-5 w-5" />
                   </div>
                   <div className="flex-1">
@@ -101,7 +101,7 @@ export default function Contact() {
 
             <Card className="mt-6 bg-bg-light">
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] border border-primary-dark bg-primary text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-primary-dark bg-primary text-white">
                   <Calendar className="h-5 w-5" />
                 </div>
                 <div>
@@ -128,22 +128,22 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="lg:col-span-3" id="contact-form">
+          <div className="scroll-mt-24 lg:col-span-3" id="contact-form">
             <ContactForm idPrefix="contact" />
           </div>
         </div>
       </Section>
 
       {/* Inline Schedule a Meeting Section — Cool Slate (#F3F6FB) */}
-      <Section bg="slate" className="border-t border-border-light" id="schedule-meeting">
+      <Section bg="soft-blue" className="scroll-mt-24 border-t border-primary/15" id="schedule-meeting">
         <SectionHeading
           label="Schedule a Meeting"
           title="Book a Strategy Consultation"
           description="Prefer a live conversation? Schedule a meeting directly with our team."
-          tone="slate"
+          tone="light-blue"
         />
         <div className="mx-auto max-w-3xl">
-          <CalendlyEmbed heightClass="h-[620px]" />
+          <CalendlyEmbed heightClass="h-155" />
         </div>
       </Section>
     </>

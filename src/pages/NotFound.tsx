@@ -10,7 +10,7 @@ export default function NotFound() {
   });
 
   return (
-    <section className="flex min-h-[60vh] items-center justify-center bg-dot-grid px-4 py-16">
+    <section className="flex min-h-[65vh] items-center justify-center bg-dot-grid px-4 pt-28 pb-16">
       <div className="rounded-[3px] border border-border-dark bg-white p-8 text-center shadow-[6px_6px_0px_#155EEF] sm:p-12">
         <p className="text-7xl font-bold text-primary">404</p>
         <h1 className="mt-4 text-2xl font-bold text-dark sm:text-3xl">

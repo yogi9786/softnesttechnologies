@@ -65,7 +65,7 @@ export default function Process() {
 
                   <div className="relative z-10 flex shrink-0 md:order-2">
                     <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-[2px] border-2 border-white text-base font-bold text-white shadow-[3px_3px_0px_#101828] ${
+                      className={`flex h-12 w-12 items-center justify-center rounded-xs border-2 border-white text-base font-bold text-white shadow-[3px_3px_0px_#101828] ${
                         isAccent ? 'bg-accent' : 'bg-primary'
                       }`}
                     >

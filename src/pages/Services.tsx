@@ -82,19 +82,19 @@ export default function Services() {
         description="Comprehensive B2B lead generation services designed to connect you with decision-makers and accelerate your sales pipeline."
       />
 
-      {/* Services Showcase Cards — Cool Slate (#F3F6FB) with Crisp White Cards */}
-      <Section bg="slate">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {/* Services Showcase Cards — Very Light Corporate Blue (#E9F1FF) */}
+      <Section bg="light-blue" className="bg-dot-grid-blue">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           {SERVICES.map((service, index) => {
             const Icon = iconMap[service.icon] || Target;
             const details = serviceDetails[service.id] || [];
             const serviceNumber = String(index + 1).padStart(2, '0');
 
             return (
-              <Card key={service.id} className="flex h-full flex-col border-border-dark/60">
+              <Card key={service.id} className="flex h-full flex-col border-primary/20 shadow-[4px_4px_0px_#D6E4FF]">
                 <div className="flex items-center justify-between">
                   <IconBox icon={Icon} variant={index % 2 === 0 ? 'primary' : 'accent'} size="lg" />
-                  <span className="rounded-[2px] border border-border-dark bg-bg-light px-2.5 py-1 text-xs font-bold tracking-wider text-dark">
+                  <span className="rounded-xs border border-border-dark bg-bg-light px-2.5 py-1 text-xs font-bold tracking-wider text-dark">
                     {serviceNumber}
                   </span>
                 </div>

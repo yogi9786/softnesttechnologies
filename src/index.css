@@ -47,14 +47,37 @@
   background-size: 28px 28px;
 }
 
-.bg-dot-grid-blue {
-  background-image: radial-gradient(circle, #BFD3FF 1px, transparent 1px);
-  background-size: 28px 28px;
+.bg-blueprint-blue {
+  background-color: #EBF2FF;
+  background-image:
+    linear-gradient(to right, rgba(21, 94, 239, 0.065) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(21, 94, 239, 0.065) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
 .bg-dot-grid-dark {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+/* Infinite horizontal platform marquee */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.marquee-wrapper:hover .animate-marquee {
+  animation-play-state: paused;
 }
 
 /* Continuous looping workflow micro-animations (GIF-like service previews) */
@@ -219,6 +242,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
   .svc-bar-sweep,
   .svc-bar-sweep-late,
   .svc-row-blue,

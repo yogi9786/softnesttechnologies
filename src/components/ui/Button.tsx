@@ -60,7 +60,7 @@ export default function Button({
 
   return (
     <Component
-      className={`inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-[2px] font-semibold tracking-tight transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variantClasses} ${sizeStyles[size]} ${className}`}
+      className={`inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-xs font-semibold tracking-tight transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${variantClasses} ${sizeStyles[size]} ${className}`}
       {...props}
     >
       {children}

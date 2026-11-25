@@ -77,7 +77,7 @@ export default function Industries() {
               <Card key={industry.id} className="flex h-full flex-col border-border-dark/60">
                 <div className="flex items-center justify-between">
                   <IconBox icon={Icon} variant={index % 2 === 0 ? 'primary' : 'accent'} size="lg" />
-                  <span className="rounded-[2px] border border-border-light bg-bg-light px-2.5 py-1 text-xs font-bold tracking-wider text-text-secondary">
+                  <span className="rounded-xs border border-border-light bg-bg-light px-2.5 py-1 text-xs font-bold tracking-wider text-text-secondary">
                     0{index + 1}
                   </span>
                 </div>

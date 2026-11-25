@@ -40,11 +40,11 @@ export default function SectionHeading({
 
   return (
     <div
-      className={`${align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'} mb-12 lg:mb-14`}
+      className={`${align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'} mb-8 lg:mb-10`}
     >
       {label && (
         <span
-          className={`mb-3 inline-flex items-center gap-2 rounded-[2px] border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${labelClasses}`}
+          className={`mb-2.5 inline-flex items-center gap-2 rounded-xs border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${labelClasses}`}
         >
           <span className="h-1.5 w-1.5 bg-accent" />
           {label}
@@ -54,7 +54,7 @@ export default function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className={`mt-4 text-base leading-relaxed sm:text-lg ${descClasses}`}>
+        <p className={`mt-3 text-base leading-relaxed sm:text-lg ${descClasses}`}>
           {description}
         </p>
       )}
