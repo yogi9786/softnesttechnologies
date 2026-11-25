@@ -4,7 +4,7 @@ interface SectionHeadingProps {
   description?: string;
   align?: 'left' | 'center';
   dark?: boolean;
-  tone?: 'light' | 'dark' | 'primary' | 'tint';
+  tone?: 'light' | 'dark' | 'slate' | 'light-blue';
 }
 
 export default function SectionHeading({
@@ -19,30 +19,23 @@ export default function SectionHeading({
 
   const labelClasses = {
     light: 'border-primary/20 bg-primary-light/70 text-primary',
-    tint: 'border-primary/25 bg-white text-primary',
+    slate: 'border-primary/25 bg-white text-primary',
+    'light-blue': 'border-primary/30 bg-white text-primary shadow-[2px_2px_0px_#D6E4FF]',
     dark: 'border-white/20 bg-white/10 text-white',
-    primary: 'border-white/30 bg-white/15 text-white',
-  }[resolvedTone];
-
-  const dotClasses = {
-    light: 'bg-accent',
-    tint: 'bg-accent',
-    dark: 'bg-accent',
-    primary: 'bg-white',
   }[resolvedTone];
 
   const titleClasses = {
     light: 'text-dark',
-    tint: 'text-dark',
+    slate: 'text-dark',
+    'light-blue': 'text-dark',
     dark: 'text-white',
-    primary: 'text-white',
   }[resolvedTone];
 
   const descClasses = {
     light: 'text-text-secondary',
-    tint: 'text-dark-secondary',
+    slate: 'text-dark-secondary',
+    'light-blue': 'text-dark-secondary',
     dark: 'text-gray-300',
-    primary: 'text-blue-100',
   }[resolvedTone];
 
   return (
@@ -53,7 +46,7 @@ export default function SectionHeading({
         <span
           className={`mb-3 inline-flex items-center gap-2 rounded-[2px] border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${labelClasses}`}
         >
-          <span className={`h-1.5 w-1.5 ${dotClasses}`} />
+          <span className="h-1.5 w-1.5 bg-accent" />
           {label}
         </span>
       )}

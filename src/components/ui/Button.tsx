@@ -2,7 +2,7 @@ import type { ReactNode, ElementType } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'accent';
 type ButtonSize = 'sm' | 'md' | 'lg';
-type ButtonSurface = 'light' | 'dark' | 'primary';
+type ButtonSurface = 'light' | 'dark';
 
 interface ButtonProps {
   children: ReactNode;
@@ -29,28 +29,15 @@ const lightVariantStyles: Record<ButtonVariant, string> = {
 
 const darkVariantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-primary text-white border border-primary shadow-[4px_4px_0px_#16A36A] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[5px_5px_0px_#16A36A] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#16A36A]',
+    'bg-primary text-white border border-blue-400/50 shadow-[4px_4px_0px_#16A36A] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[5px_5px_0px_#16A36A] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#16A36A]',
   secondary:
     'bg-white text-dark border border-white shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-bg-light hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
   outline:
-    'bg-dark-secondary text-white border border-white/80 shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
+    'bg-[#131C2E]/90 text-white border border-white/70 shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
   accent:
-    'bg-accent text-white border border-accent shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
+    'bg-accent text-white border border-emerald-400/50 shadow-[4px_4px_0px_#155EEF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[5px_5px_0px_#155EEF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#155EEF]',
   ghost:
     'bg-transparent text-gray-300 border border-transparent hover:bg-white/10 hover:text-white',
-};
-
-const primarySurfaceVariantStyles: Record<ButtonVariant, string> = {
-  primary:
-    'bg-white text-primary border border-white shadow-[4px_4px_0px_#101828] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-bg-light hover:shadow-[5px_5px_0px_#101828] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#101828]',
-  secondary:
-    'bg-dark text-white border border-dark shadow-[4px_4px_0px_#FFFFFF] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-dark-secondary hover:shadow-[5px_5px_0px_#FFFFFF] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#FFFFFF]',
-  outline:
-    'bg-transparent text-white border border-white/85 shadow-[4px_4px_0px_#101828] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-white/15 hover:shadow-[5px_5px_0px_#101828] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#101828]',
-  accent:
-    'bg-accent text-white border border-accent-dark shadow-[4px_4px_0px_#101828] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[5px_5px_0px_#101828] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#101828]',
-  ghost:
-    'bg-transparent text-blue-100 border border-transparent hover:bg-white/15 hover:text-white',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -69,11 +56,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const variantClasses =
-    surface === 'dark'
-      ? darkVariantStyles[variant]
-      : surface === 'primary'
-      ? primarySurfaceVariantStyles[variant]
-      : lightVariantStyles[variant];
+    surface === 'dark' ? darkVariantStyles[variant] : lightVariantStyles[variant];
 
   return (
     <Component

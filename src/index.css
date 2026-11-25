@@ -47,9 +47,189 @@
   background-size: 28px 28px;
 }
 
+.bg-dot-grid-blue {
+  background-image: radial-gradient(circle, #BFD3FF 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
 .bg-dot-grid-dark {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+/* Continuous looping workflow micro-animations (GIF-like service previews) */
+@keyframes svcBarSweep {
+  0%, 10% {
+    width: 18%;
+  }
+  35%, 88% {
+    width: 100%;
+  }
+  100% {
+    width: 18%;
+  }
+}
+
+@keyframes svcBarSweepLate {
+  0%, 28% {
+    width: 16%;
+  }
+  58%, 88% {
+    width: 100%;
+  }
+  100% {
+    width: 16%;
+  }
+}
+
+@keyframes svcRowBlueHighlight {
+  0%, 18% {
+    border-color: #E4E7EC;
+    box-shadow: none;
+  }
+  26%, 82% {
+    border-color: #155EEF;
+    box-shadow: 2px 2px 0px #155EEF;
+  }
+  94%, 100% {
+    border-color: #E4E7EC;
+    box-shadow: none;
+  }
+}
+
+@keyframes svcRowGreenHighlight {
+  0%, 46% {
+    border-color: #E4E7EC;
+    background-color: #FFFFFF;
+    box-shadow: none;
+  }
+  56%, 88% {
+    border-color: #16A36A;
+    background-color: #ECFDF3;
+    box-shadow: 2px 2px 0px #16A36A;
+  }
+  96%, 100% {
+    border-color: #E4E7EC;
+    background-color: #FFFFFF;
+    box-shadow: none;
+  }
+}
+
+@keyframes svcCheckPulse {
+  0%, 48% {
+    transform: scale(0.88);
+    opacity: 0.55;
+  }
+  60%, 86% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  96%, 100% {
+    transform: scale(0.88);
+    opacity: 0.55;
+  }
+}
+
+@keyframes svcQuarterFocus {
+  0%, 22% {
+    border-color: #155EEF;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 0px #155EEF;
+    transform: translateY(-1px);
+  }
+  28%, 100% {
+    border-color: #E4E7EC;
+    background-color: #FFFFFF;
+    box-shadow: none;
+    transform: translateY(0);
+  }
+}
+
+@keyframes svcRowScan {
+  0%, 28% {
+    border-color: #155EEF;
+    background-color: #F4F8FF;
+  }
+  34%, 100% {
+    border-color: #E4E7EC;
+    background-color: #FFFFFF;
+  }
+}
+
+@keyframes svcNodeStep {
+  0%, 26% {
+    border-color: #155EEF;
+    background-color: #EBF1FF;
+    box-shadow: 2px 2px 0px #155EEF;
+    transform: translateY(-2px);
+  }
+  34%, 100% {
+    border-color: #E4E7EC;
+    background-color: #FFFFFF;
+    box-shadow: none;
+    transform: translateY(0);
+  }
+}
+
+@keyframes svcCalendarSlot {
+  0%, 22% {
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0px #155EEF;
+  }
+  28%, 100% {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.svc-bar-sweep {
+  animation: svcBarSweep 4.8s ease-in-out infinite;
+}
+
+.svc-bar-sweep-late {
+  animation: svcBarSweepLate 4.8s ease-in-out infinite;
+}
+
+.svc-row-blue {
+  animation: svcRowBlueHighlight 4.8s ease-in-out infinite;
+}
+
+.svc-row-green {
+  animation: svcRowGreenHighlight 4.8s ease-in-out infinite;
+}
+
+.svc-check-pulse {
+  animation: svcCheckPulse 4.8s ease-in-out infinite;
+}
+
+.svc-tile-scan {
+  animation: svcQuarterFocus 4.8s ease-in-out infinite;
+}
+
+.svc-row-scan {
+  animation: svcRowScan 4.5s ease-in-out infinite;
+}
+
+.svc-node-step {
+  animation: svcNodeStep 4.5s ease-in-out infinite;
+}
+
+.svc-cal-slot {
+  animation: svcCalendarSlot 4.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-bar-sweep,
+  .svc-bar-sweep-late,
+  .svc-row-blue,
+  .svc-row-green,
+  .svc-check-pulse,
+  .svc-tile-scan,
+  .svc-row-scan,
+  .svc-node-step,
+  .svc-cal-slot {
+    animation: none !important;
+  }
 }
 
 @keyframes fadeIn {

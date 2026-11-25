@@ -1,4 +1,5 @@
 import { Mail, Phone, MessageSquare, ArrowUpRight, Calendar } from 'lucide-react';
+import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/ui/Section';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
@@ -26,30 +27,16 @@ export default function Contact() {
 
   return (
     <>
-      {/* 1. Page Header — Dark (#101828) */}
-      <section className="border-b border-dark-secondary bg-dark bg-dot-grid-dark py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-[2px] border border-white/20 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-gray-200">
-              <span className="h-1.5 w-1.5 bg-accent" />
-              Contact Us
-            </span>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Let&apos;s Start a{' '}
-              <span className="text-primary">Conversation</span>
-            </h1>
-            <p className="mt-4 text-base leading-relaxed text-gray-300 sm:text-lg">
-              Ready to grow your sales pipeline? Get in touch with our team to
-              discuss how we can help.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        badge="Contact Us"
+        titlePrefix="Let's Start a"
+        titleHighlight="Conversation"
+        description="Ready to grow your sales pipeline? Get in touch with our team to discuss how we can help."
+      />
 
-      {/* 2. Contact Content — Clean White */}
+      {/* Contact Content — Crisp White */}
       <Section bg="white">
         <div className="grid gap-10 lg:grid-cols-5 lg:gap-14">
-          {/* Contact Info */}
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold text-dark">Get in Touch</h2>
             <p className="mt-3 text-base leading-relaxed text-text-secondary">
@@ -112,7 +99,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Schedule Meeting Card */}
             <Card className="mt-6 bg-bg-light">
               <div className="flex items-start gap-3.5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] border border-primary-dark bg-primary text-white">
@@ -142,20 +128,19 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="lg:col-span-3" id="contact-form">
             <ContactForm idPrefix="contact" />
           </div>
         </div>
       </Section>
 
-      {/* 3. Inline Schedule a Meeting Section — Soft Blue Tint (#EEF4FF) */}
-      <Section bg="blue-tint" className="border-t border-primary/15" id="schedule-meeting">
+      {/* Inline Schedule a Meeting Section — Cool Slate (#F3F6FB) */}
+      <Section bg="slate" className="border-t border-border-light" id="schedule-meeting">
         <SectionHeading
           label="Schedule a Meeting"
           title="Book a Strategy Consultation"
           description="Prefer a live conversation? Schedule a meeting directly with our team."
-          tone="tint"
+          tone="slate"
         />
         <div className="mx-auto max-w-3xl">
           <CalendlyEmbed heightClass="h-[620px]" />

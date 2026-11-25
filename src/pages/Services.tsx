@@ -8,15 +8,13 @@ import {
   Database,
   ArrowRight,
   CheckCircle2,
-  Calendar,
 } from 'lucide-react';
+import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/ui/Section';
-import SectionHeading from '../components/ui/SectionHeading';
-import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import IconBox from '../components/ui/IconBox';
 import ServiceVisual from '../components/ServiceVisual';
-import { useCalendly } from '../context/CalendlyContext';
+import EnterpriseCTA from '../components/EnterpriseCTA';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { SERVICES } from '../constants';
 
@@ -69,8 +67,6 @@ const serviceDetails: Record<string, string[]> = {
 };
 
 export default function Services() {
-  const { openCalendly } = useCalendly();
-
   usePageMeta({
     title: 'Our Services | The Softnest Technologies',
     description:
@@ -79,28 +75,15 @@ export default function Services() {
 
   return (
     <>
-      {/* 1. Page Header — Dark (#101828) */}
-      <section className="border-b border-dark-secondary bg-dark bg-dot-grid-dark py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-[2px] border border-white/20 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-gray-200">
-              <span className="h-1.5 w-1.5 bg-accent" />
-              Our Services
-            </span>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Lead Generation{' '}
-              <span className="text-primary">Solutions</span>
-            </h1>
-            <p className="mt-4 text-base leading-relaxed text-gray-300 sm:text-lg">
-              Comprehensive B2B lead generation services designed to connect you
-              with decision-makers and accelerate your sales pipeline.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        badge="Our Services"
+        titlePrefix="Lead Generation"
+        titleHighlight="Solutions"
+        description="Comprehensive B2B lead generation services designed to connect you with decision-makers and accelerate your sales pipeline."
+      />
 
-      {/* 2. Services Showcase Cards — Soft Blue Tint (#EEF4FF) with Crisp White Cards */}
-      <Section bg="blue-tint" className="border-b border-primary/15">
+      {/* Services Showcase Cards — Cool Slate (#F3F6FB) with Crisp White Cards */}
+      <Section bg="slate">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, index) => {
             const Icon = iconMap[service.icon] || Target;
@@ -154,40 +137,12 @@ export default function Services() {
         </div>
       </Section>
 
-      {/* 3. CTA — Primary Blue (#155EEF) */}
-      <Section bg="primary" className="bg-dot-grid-dark">
-        <div className="mx-auto max-w-2xl text-center">
-          <SectionHeading
-            title="Need a Custom Solution?"
-            description="Every business is unique. Let's discuss how we can tailor our services to meet your specific goals."
-            tone="primary"
-          />
-          <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
-            <Button
-              as={Link}
-              to="/contact"
-              variant="secondary"
-              surface="primary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              Get in Touch
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              surface="primary"
-              size="lg"
-              onClick={openCalendly}
-              className="w-full sm:w-auto"
-            >
-              <Calendar className="h-4 w-4" />
-              Schedule a Meeting
-            </Button>
-          </div>
-        </div>
-      </Section>
+      <EnterpriseCTA
+        bg="white"
+        title="Need a Custom Solution?"
+        description="Every business is unique. Let's discuss how we can tailor our services to meet your specific goals."
+        primaryLabel="Get in Touch"
+      />
     </>
   );
 }

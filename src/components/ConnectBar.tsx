@@ -35,19 +35,23 @@ export default function ConnectBar({
 
   const tileBase =
     surface === 'dark'
-      ? 'flex h-10 w-10 items-center justify-center rounded-[2px] border border-white/20 bg-dark-secondary transition-all duration-150 hover:-translate-y-0.5 hover:border-primary hover:shadow-[3px_3px_0px_#155EEF] cursor-pointer'
+      ? 'flex h-10 w-10 items-center justify-center rounded-[2px] border border-white/25 bg-[#131C2E]/90 transition-all duration-150 hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-[3px_3px_0px_#155EEF] cursor-pointer'
       : 'flex h-10 w-10 items-center justify-center rounded-[2px] border border-border-dark bg-white transition-all duration-150 hover:-translate-y-0.5 hover:border-primary hover:shadow-[3px_3px_0px_#155EEF] cursor-pointer';
+
+  const blueIcon = surface === 'dark' ? 'text-blue-400' : 'text-primary';
+  const neutralIcon = surface === 'dark' ? 'text-white' : 'text-dark';
+  const greenIcon = surface === 'dark' ? 'text-emerald-400' : 'text-accent';
 
   return (
     <div
       className={`border-t pt-6 ${
-        surface === 'dark' ? 'border-white/10' : 'border-border-light'
+        surface === 'dark' ? 'border-white/15' : 'border-border-light'
       }`}
     >
       <div className="flex flex-wrap items-center gap-4">
         <span
           className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${
-            surface === 'dark' ? 'text-text-tertiary' : 'text-text-secondary'
+            surface === 'dark' ? 'text-gray-300' : 'text-text-secondary'
           }`}
         >
           {label}
@@ -57,7 +61,7 @@ export default function ConnectBar({
             href={`mailto:${COMPANY.email}`}
             title={`Email ${COMPANY.email}`}
             aria-label="Email The Softnest Technologies"
-            className={`${tileBase} text-primary`}
+            className={`${tileBase} ${blueIcon}`}
           >
             <Mail className="h-[18px] w-[18px]" />
           </a>
@@ -66,7 +70,7 @@ export default function ConnectBar({
             href={`tel:${COMPANY.phoneRaw}`}
             title={`Call ${COMPANY.phone}`}
             aria-label="Call The Softnest Technologies"
-            className={`${tileBase} ${surface === 'dark' ? 'text-white' : 'text-dark'}`}
+            className={`${tileBase} ${neutralIcon}`}
           >
             <Phone className="h-[18px] w-[18px]" />
           </a>
@@ -77,7 +81,7 @@ export default function ConnectBar({
             rel="noopener noreferrer"
             title="Message on WhatsApp"
             aria-label="WhatsApp The Softnest Technologies"
-            className={`${tileBase} text-accent hover:border-accent hover:shadow-[3px_3px_0px_#16A36A]`}
+            className={`${tileBase} ${greenIcon} hover:border-accent hover:shadow-[3px_3px_0px_#16A36A]`}
           >
             <WhatsAppIcon className="h-[18px] w-[18px]" />
           </a>
@@ -87,7 +91,7 @@ export default function ConnectBar({
             onClick={openCalendly}
             title="Schedule a Meeting"
             aria-label="Schedule a Meeting"
-            className={`${tileBase} text-primary`}
+            className={`${tileBase} ${blueIcon}`}
           >
             <Calendar className="h-[18px] w-[18px]" />
           </button>
@@ -98,7 +102,7 @@ export default function ConnectBar({
               onClick={onInquiryClick}
               title="Send an Inquiry"
               aria-label="Go to contact form"
-              className={`${tileBase} text-accent hover:border-accent hover:shadow-[3px_3px_0px_#16A36A]`}
+              className={`${tileBase} ${greenIcon} hover:border-accent hover:shadow-[3px_3px_0px_#16A36A]`}
             >
               <Send className="h-[17px] w-[17px]" />
             </button>

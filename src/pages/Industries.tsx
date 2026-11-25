@@ -1,18 +1,16 @@
-import { Link } from 'react-router-dom';
 import {
   Server,
   Cloud,
   Code,
   Rocket,
   Globe,
-  ArrowRight,
   CheckCircle2,
 } from 'lucide-react';
+import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/ui/Section';
-import SectionHeading from '../components/ui/SectionHeading';
-import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import IconBox from '../components/ui/IconBox';
+import EnterpriseCTA from '../components/EnterpriseCTA';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { INDUSTRIES } from '../constants';
 
@@ -61,28 +59,15 @@ export default function Industries() {
 
   return (
     <>
-      {/* 1. Page Header — Dark (#101828) */}
-      <section className="border-b border-dark-secondary bg-dark bg-dot-grid-dark py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-[2px] border border-white/20 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-gray-200">
-              <span className="h-1.5 w-1.5 bg-accent" />
-              Industries
-            </span>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Industries{' '}
-              <span className="text-primary">We Serve</span>
-            </h1>
-            <p className="mt-4 text-base leading-relaxed text-gray-300 sm:text-lg">
-              Specialized lead generation solutions tailored for technology-driven
-              industries and high-growth sectors.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        badge="Industries"
+        titlePrefix="Industries"
+        titleHighlight="We Serve"
+        description="Specialized lead generation solutions tailored for technology-driven industries and high-growth sectors."
+      />
 
-      {/* 2. Industries Grid — Soft Blue Tint (#EEF4FF) with Crisp White Cards */}
-      <Section bg="blue-tint" className="border-b border-primary/15">
+      {/* Industries Grid — Cool Slate (#F3F6FB) with Crisp White Cards */}
+      <Section bg="slate">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {INDUSTRIES.map((industry, index) => {
             const Icon = iconMap[industry.icon] || Server;
@@ -117,20 +102,12 @@ export default function Industries() {
         </div>
       </Section>
 
-      {/* 3. CTA — Primary Blue (#155EEF) */}
-      <Section bg="primary" className="bg-dot-grid-dark">
-        <div className="mx-auto max-w-2xl text-center">
-          <SectionHeading
-            title="Don't See Your Industry?"
-            description="Our approach is adaptable. Let's discuss how we can support your specific market and audience."
-            tone="primary"
-          />
-          <Button as={Link} to="/contact" variant="secondary" surface="primary" size="lg">
-            Talk to Us
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </Section>
+      <EnterpriseCTA
+        bg="white"
+        title="Don't See Your Industry?"
+        description="Our approach is adaptable. Let's discuss how we can support your specific market and audience."
+        primaryLabel="Talk to Us"
+      />
     </>
   );
 }

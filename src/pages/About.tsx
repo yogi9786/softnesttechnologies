@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
 import {
-  ArrowRight,
   Shield,
   Eye,
   TrendingUp,
@@ -9,11 +7,12 @@ import {
   Target,
   Handshake,
 } from 'lucide-react';
+import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/ui/Section';
 import SectionHeading from '../components/ui/SectionHeading';
-import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import IconBox from '../components/ui/IconBox';
+import EnterpriseCTA from '../components/EnterpriseCTA';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { VALUES } from '../constants';
 
@@ -51,27 +50,14 @@ export default function About() {
 
   return (
     <>
-      {/* 1. Page Header — Dark (#101828) */}
-      <section className="border-b border-dark-secondary bg-dark bg-dot-grid-dark py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-[2px] border border-white/20 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-gray-200">
-              <span className="h-1.5 w-1.5 bg-accent" />
-              About Us
-            </span>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Building Growth Through{' '}
-              <span className="text-primary">Quality Leads</span>
-            </h1>
-            <p className="mt-4 text-base leading-relaxed text-gray-300 sm:text-lg">
-              We are a specialized B2B lead generation and technology services company
-              committed to helping businesses grow with verified, qualified leads.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        badge="About Us"
+        titlePrefix="Building Growth Through"
+        titleHighlight="Quality Leads"
+        description="We are a specialized B2B lead generation and technology services company committed to helping businesses grow with verified, qualified leads."
+      />
 
-      {/* 2. Company Overview — Crisp White */}
+      {/* Company Overview — Crisp White */}
       <Section bg="white">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
@@ -118,8 +104,8 @@ export default function About() {
         </div>
       </Section>
 
-      {/* 3. Mission & Vision — Soft Blue Tint (#EEF4FF) */}
-      <Section bg="blue-tint" className="border-y border-primary/15">
+      {/* Mission & Vision — Cool Slate (#F3F6FB) */}
+      <Section bg="slate" className="border-y border-border-light">
         <div className="grid gap-6 md:grid-cols-2">
           <Card hover={false} className="border-l-4 border-l-primary shadow-[5px_5px_0px_#D0D5DD]">
             <h2 className="text-xl font-bold text-dark">Our Mission</h2>
@@ -138,7 +124,7 @@ export default function About() {
         </div>
       </Section>
 
-      {/* 4. Values — Corporate Dark (#101828) Contrast Band */}
+      {/* Values — Dark Blurred Canvas */}
       <Section bg="dark" className="border-b border-dark-secondary bg-dot-grid-dark">
         <SectionHeading
           label="Company Values"
@@ -152,7 +138,7 @@ export default function About() {
             return (
               <div
                 key={value.title}
-                className="rounded-[3px] border border-white/15 bg-dark-secondary p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:border-white/30 sm:p-7"
+                className="rounded-[3px] border border-white/15 bg-[#131C2E]/90 p-6 text-center backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/30 sm:p-7"
               >
                 <div className="mx-auto flex justify-center">
                   <IconBox
@@ -170,17 +156,16 @@ export default function About() {
         </div>
       </Section>
 
-      {/* 5. Business Approach — Light Slate (#F7F9FC) */}
-      <Section bg="light">
+      {/* Business Approach — Crisp White */}
+      <Section bg="white">
         <SectionHeading
           label="Our Business Approach"
           title="How We Work"
           description="A structured, results-driven approach to every engagement."
-          tone="tint"
         />
         <div className="grid gap-6 md:grid-cols-3">
           {approaches.map((approach, idx) => (
-            <Card key={approach.title}>
+            <Card key={approach.title} className="border-border-dark/60">
               <IconBox icon={approach.icon} variant={idx === 1 ? 'accent' : 'primary'} />
               <h3 className="mt-4 text-lg font-bold text-dark">{approach.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-text-secondary">
@@ -191,23 +176,11 @@ export default function About() {
         </div>
       </Section>
 
-      {/* 6. CTA — Primary Blue (#155EEF) */}
-      <Section bg="primary" className="bg-dot-grid-dark">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Let&apos;s Work Together
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-blue-100">
-            Ready to build a stronger sales pipeline? Get in touch with our team.
-          </p>
-          <div className="mt-8">
-            <Button as={Link} to="/contact" variant="secondary" surface="primary" size="lg">
-              Contact Us
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </Section>
+      <EnterpriseCTA
+        bg="slate"
+        title="Let's Work Together"
+        description="Ready to build a stronger sales pipeline? Get in touch with our team."
+      />
     </>
   );
 }
