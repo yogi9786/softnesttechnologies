@@ -5,7 +5,7 @@ import {
   type ReactNode,
 } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, Calendar, Mail, Phone, MessageSquare, ArrowRight, Clock } from 'lucide-react';
+import { X, Calendar, Mail, ArrowRight, Clock } from 'lucide-react';
 import { COMPANY } from '../constants';
 import { CalendlyContext } from '../context/CalendlyContext';
 import Button from './ui/Button';
@@ -109,25 +109,6 @@ export function CalendlyEmbed({ heightClass = 'h-145', onAction }: CalendlyWidge
               30-Minute Strategy Call
             </div>
           </div>
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <a
-            href={`tel:${COMPANY.phoneRaw}`}
-            className="flex items-center gap-3 rounded-xs border border-border-dark bg-white p-3.5 text-sm font-medium text-dark transition-colors hover:border-primary hover:bg-primary-light/40"
-          >
-            <Phone className="h-4 w-4 shrink-0 text-primary" />
-            <span className="truncate">{COMPANY.phone}</span>
-          </a>
-          <a
-            href={`https://wa.me/${COMPANY.whatsappRaw}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-xs border border-border-dark bg-white p-3.5 text-sm font-medium text-dark transition-colors hover:border-accent hover:bg-accent-light/40"
-          >
-            <MessageSquare className="h-4 w-4 shrink-0 text-accent" />
-            <span className="truncate">Chat on WhatsApp</span>
-          </a>
         </div>
 
         <div className="flex flex-col gap-3 border-t border-border-light pt-5 sm:flex-row sm:items-center sm:justify-between">

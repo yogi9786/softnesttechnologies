@@ -1,10 +1,6 @@
 export const COMPANY = {
   name: 'The Softnest Technologies',
   email: 'thesoftnesttechnologies@gmail.com',
-  phone: '+91 7624 866 645',
-  phoneRaw: '+917624866645',
-  whatsapp: '+91 7624 866 645',
-  whatsappRaw: '917624866645',
   formspreeEndpoint: 'https://formspree.io/f/mqpqwvzo',
   /**
    * Calendly Booking URL (single source of truth).
@@ -40,13 +36,6 @@ export const SERVICES = [
     icon: 'Monitor',
   },
   {
-    id: 'email-marketing',
-    title: 'Email Marketing',
-    description:
-      'High-converting email campaigns designed to nurture prospects and drive meaningful engagement.',
-    icon: 'Mail',
-  },
-  {
     id: 'linkedin-prospecting',
     title: 'LinkedIn Prospecting',
     description:
@@ -66,6 +55,13 @@ export const SERVICES = [
     description:
       'Comprehensive data research and enrichment services to build accurate, verified prospect databases.',
     icon: 'Database',
+  },
+  {
+    id: 'web-development',
+    title: 'Web Development',
+    description:
+      'Custom, responsive business websites and web applications built for speed, credibility, and B2B conversions.',
+    icon: 'Code',
   },
 ] as const;
 

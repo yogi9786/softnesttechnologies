@@ -1,4 +1,4 @@
-import { Mail, Phone, MessageSquare, ArrowUpRight, Calendar } from 'lucide-react';
+import { Mail, Calendar } from 'lucide-react';
 import PageHeader from '../components/ui/PageHeader';
 import Section from '../components/ui/Section';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -17,7 +17,7 @@ export default function Contact() {
   usePageMeta({
     title: 'Contact Us | The Softnest Technologies',
     description:
-      'Get in touch with The Softnest Technologies. Send an inquiry, call +91 7624 866 645, connect on WhatsApp, or schedule a meeting.',
+      'Get in touch with The Softnest Technologies. Submit an inquiry, email us, or schedule a discovery meeting.',
   });
 
   const scrollToForm = () => {
@@ -40,7 +40,7 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <h2 className="text-xl font-bold text-dark sm:text-2xl">Get in Touch</h2>
             <p className="mt-3 text-base leading-relaxed text-text-secondary">
-              Reach out through any of the channels below, or submit your inquiry and our team will respond promptly.
+              Submit your inquiry using the form, email us directly, or schedule a discovery meeting and our team will respond promptly.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -58,51 +58,6 @@ export default function Contact() {
                   </p>
                 </div>
               </a>
-
-              <a
-                href={`tel:${COMPANY.phoneRaw}`}
-                className="group flex items-start gap-3.5 rounded-xs border border-border-dark border-l-2 border-l-accent bg-white p-4 transition-colors hover:border-accent hover:bg-accent-light/30"
-              >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-accent/30 bg-accent-light text-accent-dark">
-                  <Phone className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-dark">Call Us</p>
-                  <p className="mt-0.5 text-sm font-medium text-accent-dark group-hover:underline">
-                    {COMPANY.phone}
-                  </p>
-                </div>
-              </a>
-
-              <div className="rounded-xs border border-accent/40 border-t-2 border-t-accent bg-accent-light/50 p-4 shadow-[4px_4px_0px_#16A36A]">
-                <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-accent-dark bg-accent text-white">
-                    <MessageSquare className="h-5 w-5" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="text-sm font-semibold text-dark">WhatsApp</p>
-                      <span className="inline-flex items-center gap-1 rounded-xs border border-accent/35 bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-dark">
-                        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                        Fast Reply
-                      </span>
-                    </div>
-                    <p className="mt-0.5 text-sm text-text-secondary">{COMPANY.whatsapp}</p>
-                    <Button
-                      as="a"
-                      href={`https://wa.me/${COMPANY.whatsappRaw}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="accent"
-                      size="sm"
-                      className="mt-3"
-                    >
-                      Chat on WhatsApp
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <Card className="mt-6 border-border-dark border-t-2 border-t-accent bg-bg-light shadow-[4px_4px_0px_#D1FAE5]">

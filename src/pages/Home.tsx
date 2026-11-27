@@ -5,7 +5,7 @@ import {
   Target,
   Monitor,
   Mail,
-  Phone,
+  Code,
   CalendarCheck,
   Database,
   UserPlus,
@@ -14,8 +14,6 @@ import {
   Zap,
   Shield,
   BarChart3,
-  MessageSquare,
-  ArrowUpRight,
 } from 'lucide-react';
 import Section from '../components/ui/Section';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -33,7 +31,7 @@ import { COMPANY, SERVICES } from '../constants';
 const iconMap: Record<string, typeof Target> = {
   Target,
   Monitor,
-  Mail,
+  Code,
   UserPlus,
   CalendarCheck,
   Database,
@@ -106,7 +104,7 @@ export default function Home() {
   usePageMeta({
     title: 'The Softnest Technologies – B2B Lead Generation & Technology Services',
     description:
-      'Accelerate your B2B growth with verified leads, IT & SaaS lead generation, email marketing, LinkedIn prospecting, appointment setting, and data research.',
+      'Accelerate your B2B growth with verified leads, IT & SaaS lead generation, LinkedIn prospecting, appointment setting, data research, and web development.',
   });
 
   const scrollToHomeContact = () => {
@@ -532,7 +530,7 @@ export default function Home() {
                 </span>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                Reach our team directly via email, phone, or WhatsApp, or schedule a discovery call.
+                Submit an inquiry using the form, email us directly, or schedule a discovery call.
               </p>
 
               <div className="mt-5 space-y-3.5">
@@ -551,33 +549,7 @@ export default function Home() {
                   </div>
                 </a>
 
-                <a
-                  href={`tel:${COMPANY.phoneRaw}`}
-                  className="flex items-start gap-3 rounded-xs border border-border-dark border-l-2 border-l-accent bg-bg-light p-3.5 transition-colors hover:border-accent hover:bg-accent-light/30"
-                >
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-dark" />
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
-                      Phone
-                    </p>
-                    <p className="mt-0.5 text-sm font-semibold text-accent-dark">{COMPANY.phone}</p>
-                  </div>
-                </a>
-
-                <div className="flex flex-col gap-3 pt-2 sm:flex-row lg:flex-col">
-                  <Button
-                    as="a"
-                    href={`https://wa.me/${COMPANY.whatsappRaw}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="accent"
-                    size="md"
-                    className="w-full"
-                  >
-                    <MessageSquare className="h-4 w-4" />
-                    WhatsApp Us
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Button>
+                <div className="pt-1">
                   <Button
                     type="button"
                     variant="outline"

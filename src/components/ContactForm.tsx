@@ -28,10 +28,10 @@ const initialFormData: FormData = {
 const serviceOptions = [
   'B2B Lead Generation',
   'IT & SaaS Lead Generation',
-  'Email Marketing',
   'LinkedIn Prospecting',
   'Appointment Setting',
   'Data Research',
+  'Web Development',
   'Other',
 ];
 
@@ -189,7 +189,7 @@ export default function ContactForm({
             >
               <AlertCircle className="h-4 w-4 shrink-0" />
               <span>
-                Something went wrong while submitting your inquiry. Please try again or reach out via email or WhatsApp.
+                Something went wrong while submitting your inquiry. Please try again or email us directly.
               </span>
             </div>
           )}

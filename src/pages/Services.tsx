@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {
   Target,
   Monitor,
-  Mail,
+  Code,
   UserPlus,
   CalendarCheck,
   Database,
@@ -21,7 +21,7 @@ import { SERVICES } from '../constants';
 const iconMap: Record<string, typeof Target> = {
   Target,
   Monitor,
-  Mail,
+  Code,
   UserPlus,
   CalendarCheck,
   Database,
@@ -39,12 +39,6 @@ const serviceDetails: Record<string, string[]> = {
     'SaaS-specific outreach strategies',
     'Product-market fit analysis',
     'Pipeline acceleration',
-  ],
-  'email-marketing': [
-    'Campaign strategy and planning',
-    'Email copywriting and design',
-    'A/B testing and optimization',
-    'Deliverability management',
   ],
   'linkedin-prospecting': [
     'Profile optimization',
@@ -64,13 +58,19 @@ const serviceDetails: Record<string, string[]> = {
     'Company intelligence research',
     'CRM data enrichment',
   ],
+  'web-development': [
+    'Custom responsive website design',
+    'Full-stack web application development',
+    'Performance & SEO optimization',
+    'Ongoing support and maintenance',
+  ],
 };
 
 export default function Services() {
   usePageMeta({
     title: 'Our Services | The Softnest Technologies',
     description:
-      'Explore B2B Lead Generation, IT & SaaS Lead Generation, Email Marketing, LinkedIn Prospecting, Appointment Setting, and Data Research services.',
+      'Explore B2B Lead Generation, IT & SaaS Lead Generation, LinkedIn Prospecting, Appointment Setting, Data Research, and Web Development services.',
   });
 
   return (

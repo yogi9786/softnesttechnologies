@@ -40,7 +40,7 @@ describe('The Softnest Technologies Website & Contact Form', () => {
     }
   });
 
-  it('includes Home contact form after Built for Results and PlatformMarquee in Who We Are', () => {
+  it('includes Home contact form after Built for Results, Web Development service, and inquiry-only channels', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <App />
@@ -50,12 +50,15 @@ describe('The Softnest Technologies Website & Contact Form', () => {
     expect(screen.getByText(/Platforms We Use To Generate Leads/i)).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Built for Results/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Request Qualified B2B Leads/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Web Development/i })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: /Email Marketing/i })).not.toBeInTheDocument();
 
     const mailLinks = screen.getAllByRole('link', { name: new RegExp(COMPANY.email, 'i') });
     expect(mailLinks.some((link) => link.getAttribute('href') === `mailto:${COMPANY.email}`)).toBe(true);
 
-    const phoneLinks = screen.getAllByRole('link', { name: /\+91 7624 866 645/i });
-    expect(phoneLinks.some((link) => link.getAttribute('href') === `tel:${COMPANY.phoneRaw}`)).toBe(true);
+    const allLinks = screen.getAllByRole('link');
+    expect(allLinks.some((link) => link.getAttribute('href')?.startsWith('tel:'))).toBe(false);
+    expect(allLinks.some((link) => link.getAttribute('href')?.includes('wa.me'))).toBe(false);
   });
 
   it('toggles mobile navigation drawer and opens Calendly scheduling dialog', async () => {
@@ -120,6 +123,8 @@ describe('The Softnest Technologies Website & Contact Form', () => {
     await user.type(screen.getByLabelText(/Business Email/i), 'aarav@acme.io');
     await user.type(screen.getByLabelText(/Phone Number/i), '+91 98765 43210');
     await user.type(screen.getByLabelText(/Company Name/i), 'Acme SaaS');
+    expect(screen.getByRole('option', { name: 'Web Development' })).toBeInTheDocument();
+    expect(screen.queryByRole('option', { name: 'Email Marketing' })).not.toBeInTheDocument();
     await user.selectOptions(screen.getByLabelText(/Service Interested In/i), 'IT & SaaS Lead Generation');
     await user.type(screen.getByLabelText(/Message/i), 'Need B2B SaaS outbound leads.');
 

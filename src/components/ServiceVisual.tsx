@@ -1,4 +1,4 @@
-import { Check, Calendar, Mail, ShieldCheck, Users } from 'lucide-react';
+import { Check, Calendar, Code2, ShieldCheck, Users } from 'lucide-react';
 
 interface ServiceVisualProps {
   serviceId: string;
@@ -67,31 +67,34 @@ export default function ServiceVisual({ serviceId, compact = false }: ServiceVis
         </div>
       );
 
-    case 'email-marketing':
+    case 'web-development':
       return (
         <div className={stageClass} aria-hidden="true">
           <div className="space-y-1.5 sm:space-y-2">
             <div className="flex items-center gap-1.5 border border-border-light bg-white px-2 py-1.5 sm:gap-2.5 sm:px-3 sm:py-2">
-              <Mail className="h-3 w-3 shrink-0 text-primary sm:h-3.5 sm:w-3.5" />
+              <Code2 className="h-3 w-3 shrink-0 text-primary sm:h-3.5 sm:w-3.5" />
               <div className="h-1.5 flex-1 overflow-hidden bg-border-light sm:h-2">
                 <div className="svc-bar-sweep h-full bg-primary" />
               </div>
-              <span className="text-[9px] font-semibold text-primary sm:text-[10px]">01</span>
+              <span className="text-[9px] font-semibold text-primary sm:text-[10px]">UI</span>
             </div>
 
-            <div className="flex items-center gap-1.5 border border-border-light bg-white px-2 py-1.5 sm:gap-2.5 sm:px-3 sm:py-2">
-              <Mail className="h-3 w-3 shrink-0 text-dark sm:h-3.5 sm:w-3.5" />
-              <div className="h-1.5 flex-1 overflow-hidden bg-border-light sm:h-2">
-                <div className="svc-bar-sweep-late h-full bg-dark" />
-              </div>
-              <span className="text-[9px] font-semibold text-text-secondary sm:text-[10px]">02</span>
+            <div className="svc-row-blue flex items-center justify-between gap-1 border border-border-light bg-white px-2 py-1.5 sm:px-3 sm:py-2">
+              <span className="truncate text-[9px] font-semibold text-text-secondary sm:text-[11px]">
+                Responsive &amp; Fast Build
+              </span>
+              <span className="shrink-0 rounded-xs bg-primary-light px-1.5 py-0.5 text-[8px] font-semibold text-primary sm:px-2 sm:text-[10px]">
+                SEO
+              </span>
             </div>
 
             <div className="svc-row-green flex items-center justify-between gap-1 border border-border-light bg-white px-2 py-1.5 sm:px-3 sm:py-2">
               <span className="truncate text-[9px] font-semibold text-dark sm:text-[11px]">
-                Verified Deliverability
+                Production Ready
               </span>
-              <span className="svc-check-pulse h-2 w-2 shrink-0 rounded-full bg-accent sm:h-2.5 sm:w-2.5" />
+              <span className="svc-check-pulse inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-xs bg-accent text-white sm:h-4 sm:w-4">
+                <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+              </span>
             </div>
           </div>
         </div>

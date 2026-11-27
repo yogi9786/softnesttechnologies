@@ -32,15 +32,23 @@ export default function Header() {
           {/* Brand Logo */}
           <Link
             to="/"
-            className="flex shrink-0 items-center px-2 py-1 focus:outline-none"
+            className="flex shrink-0 items-center gap-2.5 px-1.5 py-1 focus:outline-none"
             onClick={() => setOpenPathname(null)}
             aria-label={`${COMPANY.name} Home`}
           >
             <img
               src="/logo.png"
               alt={COMPANY.name}
-              className="h-7 w-auto object-contain sm:h-8"
+              className="h-9 w-9 shrink-0 rounded-full object-contain shadow-xs sm:h-11 sm:w-11"
             />
+            <div className="leading-tight" aria-hidden="true">
+              <span className="block text-xs font-bold tracking-tight text-dark sm:text-sm">
+                The Softnest
+              </span>
+              <span className="block text-[9px] font-semibold uppercase tracking-[0.14em] text-primary sm:text-[10px]">
+                Technologies
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -51,11 +59,10 @@ export default function Header() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] font-medium transition-colors xl:px-3.5 xl:text-sm ${
-                    isActive
-                      ? 'bg-primary-light text-primary'
-                      : 'text-dark-secondary hover:bg-bg-light hover:text-dark'
-                  }`}
+                  className={`whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] font-medium transition-colors xl:px-3.5 xl:text-sm ${isActive
+                    ? 'bg-primary-light text-primary'
+                    : 'text-dark-secondary hover:bg-bg-light hover:text-dark'
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -98,11 +105,10 @@ export default function Header() {
                     key={link.path}
                     to={link.path}
                     onClick={() => setOpenPathname(null)}
-                    className={`block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'bg-primary-light text-primary'
-                        : 'text-dark-secondary hover:bg-bg-light hover:text-dark'
-                    }`}
+                    className={`block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${isActive
+                      ? 'bg-primary-light text-primary'
+                      : 'text-dark-secondary hover:bg-bg-light hover:text-dark'
+                      }`}
                   >
                     {link.label}
                   </Link>
